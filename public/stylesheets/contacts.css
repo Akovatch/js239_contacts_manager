@@ -1,0 +1,151 @@
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  width: 70%;
+  margin: auto;
+}
+
+header {
+  width: 500px;
+  margin: auto;
+  padding: 50px;
+}
+
+h1, h2 {
+  text-align: center;
+}
+
+form dd {
+  margin: 5px 0 25px;
+  width: auto;
+}
+
+#contacts_list {
+  font-size: 0;
+  line-height: 0;
+  padding-top: 20px;
+}
+
+.single_contact dd {
+  margin: 5px 0 20px 0;
+}
+
+.single_contact {
+  display: inline-block;
+  box-sizing: border-box;
+  font-size: 0.80rem;
+  line-height: normal;
+  border-radius: 20px;
+  width: 200px;
+  height: 250px;
+  background-color: #F8F8F8;
+  border: solid 1px lightgray;
+  margin: 10px;
+  padding: 10px;
+}
+
+#add_tags_ul, #edit_tags_ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+#add_tags_ul li, #edit_tags_ul li {
+  display: inline;
+  list-style: none;
+  margin: 10px;
+}
+
+#top_section {
+  width: 500px;
+  margin: auto;
+  padding: 50px;
+  background-color: lightgrey;
+}
+
+#add_button {
+  float: left;
+}
+
+#search_bar {
+  float: right;
+}
+
+#no_contacts {
+  font-size: 1.5rem;
+  line-height: normal;
+  text-align: center;
+  margin: 50px;
+}
+
+.see_all_contacts {
+  margin: 0 10px;
+}
+
+.contact_info {
+  list-style-type: none;
+  padding: 0;
+}
+
+.contact_info li {
+  padding: 10px 0;
+}
+
+.tag_list {
+  padding: 0;
+}
+
+.tag_list li {
+  display: inline-block;
+  list-style-type: none;
+}
+
+.tag_link {
+  padding: 0 0 0 3px;
+}
+
+.tag_list {
+  margin: 0 0 20px 0;
+}
+
+/* this layer covers and darkens the whole page when modal is up */
+#modal_layer {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 2;
+  background: rgba(0, 0, 0, .3);
+  transition: visibility 1s, opacity 1s; /* setting transition duration */
+}
+
+.modal {
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  padding: 50px;
+  z-index: 3; /* larger values overlay elements with lower z-indices */
+  width: 500px;
+  transform: translate(-50%, -50%);
+  text-align: left;
+  background: #ffffff;
+  transition: visibility 1s, opacity 1s; /* setting transition duration */
+}
+
+.hide {
+  visibility: hidden;
+  opacity: 0;
+}
+
+.show {
+  visibility: visible;
+  opacity: 1;
+}
+
+.invalid {
+  border: dashed 1px red;
+}
+
+.error_message, #form_error_message {
+  color: red;
+  margin: 0 0 0 10px;
+}

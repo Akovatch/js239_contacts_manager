@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <link rel="stylesheet" href="stylesheets/contacts.css">
+  <script src="javascripts/jquery.js"></script>
+  <script src="javascripts/handlebars.js"></script>
+  <script src="javascripts/app.js"></script>
+</head>
+<body>
+  <div id="modal_layer" class="hide"></div>
+  <div id="add_contact_modal" class="hide modal">
+    <h2>Create Contact</h2>
+    <form id="add_form" method="post" action="http://localhost:3000/api/contacts/" novalidate>
+      <dl>
+        <dt><label for="add_full_name">Full name:</label></dt>
+        <dd><input type="text" id="add_full_name" name="full_name" required></dd>
+        <dt><label for="add_phone_number">Phone Number:</label></dt>
+        <dd><input type="text" id="add_phone_number" name="phone_number" required></dd>
+        <dt><label for="add_email">Email:</label></dt>
+        <dd><input type="text" id="add_email" name="email" pattern=".+@.+" required></dd>
+        <dt><label>Tags:</label></dt>
+        <dd>
+          <input type="text" class="tag_input">
+          <button type="button" class="add_tag_btn">Add Tag</button>
+          <ul id="add_tags_ul" data-tags="">
+          </ul>
+        </dd>
+      </dl>
+      <div>
+        <input type="submit" value="Submit">
+        <button type="button" class="cancel_btn">Cancel</button>
+      </div>
+    </form>
+  </div>
+
+  <div id="edit_contact_modal" class="hide modal">
+    <h2>Edit Contact</h2>
+    <form id="edit_form" method="post" action="" data-id="" novalidate>
+      <dl>
+        <dt><label for="edit_full_name">Full name:</label></dt>
+        <dd><input type="text" id="edit_full_name" name="full_name" required></dd>
+        <dt><label for="edit_phone_number">Phone Number:</label></dt>
+        <dd><input type="text" id="edit_phone_number" name="phone_number" required></dd>
+        <dt><label for="edit_email">Email:</label></dt>
+        <dd><input type="text" id="edit_email" name="email" pattern=".+@.+" required></dd>
+        <dt><label>Tags:</label></dt>
+        <dd>
+          <input type="text" class="tag_input">
+          <button type="button" class="add_tag_btn">Add Tag</button>
+          <ul id="edit_tags_ul" data-tags="">
+          </ul>
+        </dd>
+      </dl>
+      <div>
+        <input type="submit" value="Submit">
+        <button type="button" class="cancel_btn">Cancel</button>
+      </div>
+    </form>
+  </div>
+
+  <header>
+    <h1>Contacts Manager</h1>
+  </header>
+  <section id="top_section">
+    <button id="add_btn">Add Contact</button>
+    <input type="text" id="search_bar" placeholder="Search">
+  </section>
+
+  <section>
+    <ul id="contacts_list"></ul>
+  </section>
+</body>
+
+<script id="template" type="text/x-handlebars">
+  {{#each contacts}}
+  {{> partial}}
+  {{/each}}
+</script>
+
+<script id="partial" type="text/x-handlebars">
+  <li class="single_contact" data-id="{{id}}">
+    <h3>{{full_name}}</h3>
+      <dl class="contact_info">
+        <dt><strong>Phone:</strong></dt>
+        <dd> {{phone_number}}</dd>
+        <dt><strong>Email:</strong></dt>
+        <dd>{{email}}</dd>
+      </dl>
+      <ul class="tag_list"><strong>Tags:</strong>
+        {{#if tags}}
+          {{#each tags}}
+          <li><a href="#" class="tag_link">{{this}}</a></li>
+          {{/each}}
+        {{else}}
+          <li>(no tags)</li>
+        {{/if}}
+      </ul>
+      <div>
+        <button type="button" class="edit_btn" class="edit_btn">Edit</button>
+        <button type="button" class="delete_btn" class="delete_btn">Delete</button>
+      </div>
+    </li>
+  </script>
+</html>
+
+
